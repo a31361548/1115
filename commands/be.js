@@ -4,7 +4,7 @@ import beTemplate from '../templates/be.js'
 
 export default async (event) => {
   try {
-    const { data } = await axios.get('https://wdaweb.github.io/')
+    const { data } = await axios.get('https://kfc.2dim.space/')
     const $ = cheerio.load(data)
     const replies = []
     $('#be .card').each(function () {

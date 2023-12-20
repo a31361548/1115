@@ -1,8 +1,6 @@
 import 'dotenv/config'
 import linebot from 'linebot'
-import fe from './commands/fe.js'
 import be from './commands/be.js'
-import anime from './commands/anime.js'
 import { scheduleJob } from 'node-schedule'
 import * as usdtwd from './data/usdtwd.js'
 
@@ -32,8 +30,72 @@ bot.on('message', (event) => {
       anime(event)
     } else if (event.message.text === '匯率') {
       event.reply(usdtwd.exrate.toString())
+    } else if (event.message.text === '123') {
+      event.reply({
+        type: 'text',
+        text: '123',
+        quickReply: {
+          items: [
+            {
+              type: 'action',
+              action: {
+                // 傳訊息
+                type: 'message',
+                // 傳送的文字
+                text: 'message text',
+                // 按鈕文字
+                label: 'message'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'camera',
+                label: '相機'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'cameraRoll',
+                label: '相簿'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'location',
+                label: '位置'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'uri',
+                uri: 'http://wdaweb.github.io',
+                label: '網址'
+              }
+            },
+            {
+              type: 'action',
+              action: {
+                type: 'postback',
+                label: 'postback',
+                // 傳送文字
+                // text: 'postback 文字',
+                // postback 事件接收到的資料
+                data: '1234'
+              }
+            }
+          ]
+        }
+      })
     }
   }
+})
+
+bot.on('postback', (event) => {
+  console.log(event.postback.data)
 })
 
 bot.listen('/', process.env.PORT || 3000, () => {
