@@ -4,14 +4,14 @@ import beTemplate from '../templates/be.js'
 
 export default async (event) => {
   try {
-    const { data } = await axios.get('https://kfc.2dim.space/')
+    const { data } = await axios.get('https://www.sushiexpress.com.tw/sushi-express/Menu')
     const $ = cheerio.load(data)
     const replies = []
-    $('#be .card').each(function () {
+    $('.grid').each(function () {
       // 取出圖片和標題
       const image = $(this).find('img').attr('src')
-      const imageUrl = new URL(image, 'https://wdaweb.github.io/').href
-      const title = $(this).find('.card-title').text().trim()
+      const imageUrl = new URL(image, 'https://www.sushiexpress.com.tw/').href
+      const product = $(this).find('.product_name').text().trim()
       // 產生一個新的回應訊息模板
       const template = beTemplate()
       // 修改模板內容

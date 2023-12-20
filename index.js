@@ -1,14 +1,7 @@
 import 'dotenv/config'
 import linebot from 'linebot'
 import be from './commands/be.js'
-import { scheduleJob } from 'node-schedule'
-import * as usdtwd from './data/usdtwd.js'
-
-// https://crontab.guru/once-a-day
-scheduleJob('0 0 * * *', () => {
-  usdtwd.update()
-})
-usdtwd.update()
+import * as sushi from './data/sushi.js'
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
@@ -29,7 +22,7 @@ bot.on('message', (event) => {
     } else if (event.message.text.startsWith('動畫')) {
       anime(event)
     } else if (event.message.text === '匯率') {
-      event.reply(usdtwd.exrate.toString())
+      event.reply(sushi.exrate.toString())
     } else if (event.message.text === '123') {
       event.reply({
         type: 'text',
