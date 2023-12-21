@@ -1,7 +1,6 @@
 import 'dotenv/config'
 import linebot from 'linebot'
 import be from './commands/be.js'
-import * as sushi from './data/sushi.js'
 
 const bot = linebot({
   channelId: process.env.CHANNEL_ID,
@@ -15,14 +14,8 @@ bot.on('message', (event) => {
   }
 
   if (event.message.type === 'text') {
-    if (event.message.text === '前端') {
-      fe(event)
-    } else if (event.message.text === '後端') {
+    if (event.message.text === '壽司') {
       be(event)
-    } else if (event.message.text.startsWith('動畫')) {
-      anime(event)
-    } else if (event.message.text === '匯率') {
-      event.reply(sushi.exrate.toString())
     } else if (event.message.text === '123') {
       event.reply({
         type: 'text',

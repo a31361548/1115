@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as cheerio from 'cheerio'
-import beTemplate from '../templates/be.js'
+import cardsTemplate from '../templates/cards.js'
 
 export default async (event) => {
   try {
@@ -13,10 +13,10 @@ export default async (event) => {
       const imageUrl = new URL(image, 'https://www.sushiexpress.com.tw/').href
       const product = $(this).find('.product_name').text().trim()
       // 產生一個新的回應訊息模板
-      const template = beTemplate()
+      const template = cardsTemplate()
       // 修改模板內容
       template.hero.url = imageUrl
-      template.body.contents[0].text = title
+      template.body.contents[0].text = product
       replies.push(template)
     })
 
