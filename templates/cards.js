@@ -35,13 +35,6 @@ export default () => {
               contents: [
                 {
                   type: 'text',
-                  text: 'Place',
-                  color: '#aaaaaa',
-                  size: 'sm',
-                  flex: 1
-                },
-                {
-                  type: 'text',
                   text: 'Miraina Tower, 4-1-6 Shinjuku, Tokyo',
                   wrap: true,
                   color: '#666666',

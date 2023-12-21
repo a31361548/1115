@@ -12,17 +12,22 @@ export default async (event) => {
       const image = $(this).find('img').attr('src')
       const imageUrl = new URL(image, 'https://www.sushiexpress.com.tw/').href
       const product = $(this).find('.product_name').text().trim()
+      const productEn = $(this).find('.product_name_en').text()
+      const price = $(this).find('.product_name_jp').text()
       // 產生一個新的回應訊息模板
       const template = cardsTemplate()
       // 修改模板內容
       template.hero.url = imageUrl
       template.body.contents[0].text = product
+      template.body.contents[1].contents[0].contents[0].text = productEn
+      template.body.contents[1].contents[1].contents[0].text = '價格(Price)'
+      template.body.contents[1].contents[1].contents[1].text = price
       replies.push(template)
     })
 
     const result = await event.reply({
       type: 'flex',
-      altText: '後端課程',
+      altText: '爭鮮',
       contents: {
         type: 'carousel',
         contents: replies

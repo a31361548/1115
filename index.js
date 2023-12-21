@@ -16,10 +16,10 @@ bot.on('message', (event) => {
   if (event.message.type === 'text') {
     if (event.message.text === '壽司') {
       be(event)
-    } else if (event.message.text === '123') {
+    } else if (event.message.text === '迴轉壽司') {
       event.reply({
         type: 'text',
-        text: '123',
+        text: '今晚你想來點....',
         quickReply: {
           items: [
             {
