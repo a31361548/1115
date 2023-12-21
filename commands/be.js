@@ -7,7 +7,7 @@ export default async (event) => {
     const { data } = await axios.get('https://www.sushiexpress.com.tw/sushi-express/Menu')
     const $ = cheerio.load(data)
     const replies = []
-    $('.grid').each(function () {
+    $('.grid-item').each(function () {
       // 取出圖片和標題
       const image = $(this).find('img').attr('src')
       const imageUrl = new URL(image, 'https://www.sushiexpress.com.tw/').href
