@@ -8,7 +8,7 @@ export default async (event) => {
     const $ = cheerio.load(data)
     const replies = []
     $('.grid-item')
-      .slice(0, 12)
+      .slice(12, 24)
       .each(function () {
         // 取出圖片和標題
         const image = $(this).find('img').attr('src')
@@ -29,7 +29,7 @@ export default async (event) => {
 
     const result = await event.reply({
       type: 'flex',
-      altText: '爭鮮',
+      altText: '握壽司2',
       contents: {
         type: 'carousel',
         contents: replies
