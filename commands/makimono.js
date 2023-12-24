@@ -24,6 +24,8 @@ export default async (event) => {
         template.body.contents[1].contents[0].contents[0].text = productEn
         template.body.contents[1].contents[1].contents[0].text = '價格(Price)'
         template.body.contents[1].contents[1].contents[1].text = price
+        template.footer.contents[0].action.label = '搜索附近店家'
+        template.footer.contents[0].action.uri = 'https://www.sushiexpress.com.tw/sushi-express/location?brand=1'
         replies.push(template)
       })
     $('.grid-item')
@@ -43,6 +45,8 @@ export default async (event) => {
         template.body.contents[1].contents[0].contents[0].text = productEn
         template.body.contents[1].contents[1].contents[0].text = '價格(Price)'
         template.body.contents[1].contents[1].contents[1].text = price
+        template.footer.contents[0].action.label = '搜索附近店家'
+        template.footer.contents[0].action.uri = 'https://www.sushiexpress.com.tw/sushi-express/location?brand=1'
         replies.push(template)
       })
 
