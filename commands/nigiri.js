@@ -31,7 +31,7 @@ export default async (event) => {
 
     const result = await event.reply({
       type: 'flex',
-      altText: '握壽司',
+      altText: '爭鮮',
       contents: {
         type: 'carousel',
         contents: replies

@@ -8,7 +8,7 @@ export default async (event) => {
     const $ = cheerio.load(data)
     const replies = []
     $('.grid-item')
-      .slice(81, 91)
+      .slice(81, 90)
       .each(function () {
         // 取出圖片和標題
         const image = $(this).find('img').attr('src')

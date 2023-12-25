@@ -24,7 +24,7 @@ bot.on('message', (event) => {
   }
 
   if (event.message.type === 'text') {
-    if (event.message.text === '壽司') {
+    if (event.message.text === '握壽司') {
       event.reply({
         type: 'text',
         text: '今晚你想來點....',
@@ -36,7 +36,7 @@ bot.on('message', (event) => {
                 // 傳訊息
                 type: 'message',
                 // 傳送的文字
-                text: '握壽司',
+                text: '選我',
                 // 按鈕文字
                 label: '握壽司'
               }
@@ -47,9 +47,9 @@ bot.on('message', (event) => {
                 // 傳訊息
                 type: 'message',
                 // 傳送的文字
-                text: '軍艦壽司',
+                text: '不夠',
                 // 按鈕文字
-                label: '軍艦壽司'
+                label: '不夠'
               }
             },
             {
@@ -58,33 +58,61 @@ bot.on('message', (event) => {
                 // 傳訊息
                 type: 'message',
                 // 傳送的文字
-                text: '生魚片',
+                text: '再來',
                 // 按鈕文字
-                label: '生魚片'
+                label: '再來'
+              }
+            }
+          ]
+        }
+      })
+    } else if (event.message.text === '選我') {
+      nigiri(event)
+    } else if (event.message.text === '不夠') {
+      nigiri2(event)
+    } else if (event.message.text === '再來') {
+      nigiri3(event)
+    } else if (event.message.text === '軍艦壽司') {
+      gunkan(event)
+    } else if (event.message.text === '生魚片') {
+      sashimi(event)
+    } else if (event.message.text === '小菜') {
+      event.reply({
+        type: 'text',
+        text: '想來點小菜嗎?',
+        quickReply: {
+          items: [
+            {
+              type: 'action',
+              action: {
+                type: 'message',
+                text: '小菜1',
+                label: '小菜1'
               }
             },
             {
               type: 'action',
               action: {
-                // 傳訊息
                 type: 'message',
-                // 傳送的文字
-                text: '卷類',
-                // 按鈕文字
-                label: '卷類'
+                text: '小菜2',
+                label: '小菜2'
               }
-            },
-            {
-              type: 'action',
-              action: {
-                // 傳訊息
-                type: 'message',
-                // 傳送的文字
-                text: '小菜',
-                // 按鈕文字
-                label: '小菜'
-              }
-            },
+            }
+          ]
+        }
+      })
+    } else if (event.message.text === '小菜1') {
+      appetizer(event)
+    } else if (event.message.text === '小菜2') {
+      appetizer2(event)
+    } else if (event.message.text === '卷類') {
+      makimono(event)
+    } else if (event.message.text === '其他') {
+      event.reply({
+        type: 'text',
+        text: '了解更多',
+        quickReply: {
+          items: [
             {
               type: 'action',
               action: {
@@ -102,9 +130,9 @@ bot.on('message', (event) => {
                 // 傳訊息
                 type: 'message',
                 // 傳送的文字
-                text: '嚴選商品',
+                text: '外帶餐盒',
                 // 按鈕文字
-                label: '嚴選商品'
+                label: '外帶餐盒'
               }
             },
             {
@@ -113,84 +141,22 @@ bot.on('message', (event) => {
                 // 傳訊息
                 type: 'message',
                 // 傳送的文字
-                text: '外帶餐盒',
+                text: '嚴選商品',
                 // 按鈕文字
-                label: '外帶餐盒'
+                label: '嚴選商品'
               }
             }
           ]
         }
       })
-    } else if (event.message.text === '握壽司') {
-      nigiri(event)
-      event.reply({
-        quickReply: {
-          items: [
-            {
-              type: 'action',
-              action: {
-                type: 'message',
-                text: 'nigiri2',
-                label: '不夠'
-              }
-            }
-          ]
-        }
-      })
-    } else if (event.message.text === 'nigiri2') {
-      nigiri2(event)
-      event.reply({
-        quickReply: {
-          items: [
-            {
-              type: 'action',
-              action: {
-                type: 'message',
-                text: 'nigiri3',
-                label: '更多'
-              }
-            }
-          ]
-        }
-      })
-    } else if (event.message.text === 'nigiri3') {
-      nigiri3(event)
-    } else if (event.message.text === '軍艦壽司') {
-      gunkan(event)
-    } else if (event.message.text === '生魚片') {
-      sashimi(event)
-    } else if (event.message.text === '小菜') {
-      appetizer(event)
-      event.reply({
-        quickReply: {
-          items: [
-            {
-              type: 'action',
-              action: {
-                type: 'message',
-                text: 'appetizer2',
-                label: '更多'
-              }
-            }
-          ]
-        }
-      })
-    } else if (event.message.text === 'appetizer2') {
-      appetizer2(event)
     } else if (event.message.text === '飲料/甜點') {
       drinks(event)
     } else if (event.message.text === '嚴選商品') {
       special(event)
     } else if (event.message.text === '外帶餐盒') {
       takeOut(event)
-    } else if (event.message.text === '卷類') {
-      makimono(event)
     }
   }
-})
-
-bot.on('postback', (event) => {
-  console.log(event.postback.data)
 })
 
 bot.listen('/', process.env.PORT || 3000, () => {

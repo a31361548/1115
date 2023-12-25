@@ -49,7 +49,7 @@ export default () => {
                   text: 'Time',
                   color: '#aaaaaa',
                   size: 'sm',
-                  flex: 1
+                  flex: 3
                 },
                 {
                   type: 'text',
